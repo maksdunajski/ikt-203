@@ -1,0 +1,3 @@
+C:/Users/maksd/Fag/IKT-203/submission_2/cmake-build-debug/CMakeFiles/submission_2.dir
+C:/Users/maksd/Fag/IKT-203/submission_2/cmake-build-debug/CMakeFiles/edit_cache.dir
+C:/Users/maksd/Fag/IKT-203/submission_2/cmake-build-debug/CMakeFiles/rebuild_cache.dir
