@@ -1,0 +1,14 @@
+{
+    "version": 1,
+    "revision": 0,
+    "rules": [
+        {
+            "primary-output": "CMakeFiles\\submission_2.dir\\main.cpp.obj",
+            "outputs": [
+                "C:\\Users\\maksd\\Fag\\IKT-203\\submission_2\\cmake-build-debug\\vc140.pdb",
+                "CMakeFiles\\submission_2.dir\\main.cpp.obj.ddi"
+            ],
+            "requires": []
+        }
+    ]
+}
