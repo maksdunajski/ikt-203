@@ -1,0 +1,25 @@
+# ninja log v6
+7	350	7844984492283907	CMakeFiles/submission_3.dir/main.cpp.obj.ddi	e278eefb20b7cdb6
+351	385	7844984496019223	CMakeFiles/submission_3.dir/CXX.dd	42da83c4944420aa
+351	385	7844984496019223	C:/Users/maksd/Fag/IKT-203/submission_3/cmake-build-debug/CMakeFiles/submission_3.dir/CXXModules.json	42da83c4944420aa
+351	385	7844984496019223	CMakeFiles/submission_3.dir/main.cpp.obj.modmap	42da83c4944420aa
+385	1265	7844984496066388	CMakeFiles/submission_3.dir/main.cpp.obj	c22da7fee4765d5e
+1266	1527	7844984504866025	submission_3.exe	324f6c4722f77c21
+2	130	7844984692146226	CMakeFiles/submission_3.dir/main.cpp.obj.ddi	e278eefb20b7cdb6
+131	156	7844984693440567	CMakeFiles/submission_3.dir/CXX.dd	42da83c4944420aa
+131	156	7844984693440567	C:/Users/maksd/Fag/IKT-203/submission_3/cmake-build-debug/CMakeFiles/submission_3.dir/CXXModules.json	42da83c4944420aa
+131	156	7844984693440567	CMakeFiles/submission_3.dir/main.cpp.obj.modmap	42da83c4944420aa
+156	803	7844984693696105	CMakeFiles/submission_3.dir/main.cpp.obj	c22da7fee4765d5e
+803	954	7844984700166840	submission_3.exe	324f6c4722f77c21
+5	125	7844986129648070	CMakeFiles/submission_3.dir/main.cpp.obj.ddi	e278eefb20b7cdb6
+126	154	7844986130862386	CMakeFiles/submission_3.dir/CXX.dd	42da83c4944420aa
+126	154	7844986130862386	C:/Users/maksd/Fag/IKT-203/submission_3/cmake-build-debug/CMakeFiles/submission_3.dir/CXXModules.json	42da83c4944420aa
+126	154	7844986130862386	CMakeFiles/submission_3.dir/main.cpp.obj.modmap	42da83c4944420aa
+155	771	7844986131146122	CMakeFiles/submission_3.dir/main.cpp.obj	c22da7fee4765d5e
+771	924	7844986137315660	submission_3.exe	324f6c4722f77c21
+2	111	7844994414350341	CMakeFiles/submission_3.dir/main.cpp.obj.ddi	e278eefb20b7cdb6
+111	133	7844994415442586	CMakeFiles/submission_3.dir/CXX.dd	42da83c4944420aa
+111	133	7844994415442586	C:/Users/maksd/Fag/IKT-203/submission_3/cmake-build-debug/CMakeFiles/submission_3.dir/CXXModules.json	42da83c4944420aa
+111	133	7844994415442586	CMakeFiles/submission_3.dir/main.cpp.obj.modmap	42da83c4944420aa
+133	952	7844994415666032	CMakeFiles/submission_3.dir/main.cpp.obj	c22da7fee4765d5e
+952	1070	7844994423856097	submission_3.exe	324f6c4722f77c21
