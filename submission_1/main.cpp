@@ -16,6 +16,7 @@ enum EGenreFlags {
 };
 
 
+// Time: O(1) (fixed number of flags) | Space: O(1)
 static std::string GenreFlagsToString(int genreFlags) {
     std::string result;
     if (genreFlags & EGenreFlags::Action) result += "Action ";
@@ -43,9 +44,11 @@ class TMovie {
 
     public:
 
+        // Time: O(1) | Space: O(1)
         TMovie(const std::string& title, const std::string& director, int year, int genre, float score)
             : Title(title), Director(director), year(year), genreFlags(genre), score(score) {}
 
+    // Time: O(1) (printing considered output-bound) | Space: O(1)
     void printInfo() {
         std::cout << "Title: " << Title << std::endl;
         std::cout << "Director: " << Director << std::endl;
@@ -53,11 +56,17 @@ class TMovie {
         std::cout << "Genres: " << GenreFlagsToString(genreFlags) << std::endl;
         std::cout << "Score: " << score << std::endl;
     }
+    // Time: O(1) | Space: O(1)
     std::string GetTitle() { return Title; }
+    // Time: O(1) | Space: O(1)
     std::string GetDirector() { return Director; }
+    // Time: O(1) | Space: O(1)
     int GetYear() { return year; }
+    // Time: O(1) | Space: O(1)
     float getRating() { return score; }
+    // Time: O(1) | Space: O(1)
     int GetGenreFlags() { return genreFlags; }
+    // Time: O(1) | Space: O(1)
     bool hasGenre(EGenreFlags genre) {
         return (genreFlags & genre) != 0;
     }
@@ -72,20 +81,27 @@ struct TMovieNode {
         TMovie* Movie;
         TMovieNode* Next;
         TMovieNode* Previous;
+        // Time: O(1) | Space: O(1)
         TMovieNode(TMovie* movie): Movie(movie), Next(nullptr), Previous(nullptr) {}
 
     public:
 
 
+        // Time: O(1) (TMovie destructor assumed O(1)) | Space: O(1)
         ~TMovieNode() {
             delete Movie;
         }
 
+    // Time: O(1) | Space: O(1)
     TMovie* GetMovie() { return Movie; }
+    // Time: O(1) | Space: O(1)
     TMovieNode* GetNext() { return Next; }
+    // Time: O(1) | Space: O(1)
     TMovieNode* GetPrevious() { return Previous; }
 
+    // Time: O(1) | Space: O(1)
     void SetNext(TMovieNode* next) { Next = next; }
+    // Time: O(1) | Space: O(1)
     void SetPrevious(TMovieNode* previous) { Previous = previous; }
 };
 
@@ -96,6 +112,7 @@ private:
     TMovieNode* Tail;
     int size;
 
+    // Time: O(n) worst (up to n/2 traversals) | Space: O(1)
     TMovieNode* internalGetAtIndex(int index) {
         if (index < 0 || index >= size) {
             return nullptr;
@@ -118,6 +135,7 @@ private:
 
 public:
 
+    // Time: O(1) | Space: O(1)
     TMovieList() {
             Head = new TMovieNode(nullptr);
             Tail = Head;
@@ -125,11 +143,13 @@ public:
 
     }
 
+    // Time: O(n) (calls Clear) | Space: O(1)
     ~TMovieList() {
         Clear();
         delete Head;
         }
 
+    // Time: O(n) | Space: O(1)
     void Clear() {
         TMovieNode* Current = Head->Next;
         while (Current) {
@@ -143,6 +163,7 @@ public:
         size = 0;
         }
 
+    // Time: O(1) | Space: O(1)
     void append(TMovie* movie) {
         TMovieNode* newNode = new TMovieNode(movie);
         newNode->Previous = Tail;
@@ -151,6 +172,7 @@ public:
         size++;
     }
 
+    // Time: O(1) | Space: O(1)
     void prepend(TMovie* movie) {
         TMovieNode* newNode = new TMovieNode(movie);
         newNode->Next = Head->Next;
@@ -165,12 +187,13 @@ public:
         size++;
     }
 
-    // Return the movie at index (0-based) or nullptr
+    // Time: O(n) (depends on internalGetAtIndex) | Space: O(1)
     TMovie* GetAtIndex(int index) {
         TMovieNode* node = internalGetAtIndex(index);
         return node ? node->GetMovie() : nullptr;
     }
 
+    // Time: O(n) (lookup) | Space: O(1)
     bool RemoveAtIndex(int aIndex) {
         if (aIndex < 0 || aIndex >= size) return false;
         TMovieNode* toDelete = internalGetAtIndex(aIndex);
@@ -192,6 +215,7 @@ public:
         return true;
     }
 
+    // Time: O(n) | Space: O(1)
     void reverse() {
         if (size <= 1) return;
         TMovieNode* current = Head->Next;
@@ -210,6 +234,7 @@ public:
         Tail = newTail ? newTail : Head;
     }
 
+    // Time: O(n) worst-case | Space: O(1)
     TMovie* SearchFor(FCheckMovie aCheckFunc, void* aUserData) {
         TMovieNode* current = Head->Next;
         while (current) {
@@ -221,6 +246,7 @@ public:
         return nullptr;
     }
 
+    // Time: O(n) | Space: O(1)
     void everyMovie(FMovieIndex aIndexFunc) {
         TMovieNode* current = Head->Next;
         int index = 0;
@@ -234,18 +260,22 @@ public:
 
 
 };
+// Time: O(1) (printing cost depends on string length) | Space: O(1)
 static void printNode(std::string* data, int index) {
     std::cout << "Movie/node " << index << ": " << *data << std::endl;
 }
 
+// Time: O(L) where L = min(lengths of compared titles) | Space: O(1)
 static bool checkMovieByTitle(TMovie* movie, void* title) {
     return movie->GetTitle() == *(static_cast<std::string*>(title));
 }
 
+// Time: O(L) where L = min(lengths of compared directors) | Space: O(1)
 static bool checkMovieByDirector(TMovie* movie, void* director) {
     return movie->GetDirector() == *(static_cast<std::string*>(director));
 }
 
+// Time: O(1) (bit check + optional print) | Space: O(1)
 static bool findAllMoviesByGenre(TMovie* movie, void* genre) {
     if (movie->hasGenre(*(static_cast<EGenreFlags*>(genre)))) {
         movie->printInfo();
@@ -255,6 +285,7 @@ static bool findAllMoviesByGenre(TMovie* movie, void* genre) {
 }
 
 // Helper function for printing Action movies (non-capturing for function pointer compatibility)
+// Time: O(1) (bit check + optional print) | Space: O(1)
 static void PrintActionMovies(TMovie* movie, int /*index*/) {
     if (movie->hasGenre(EGenreFlags::Action)) {
         movie->printInfo();
@@ -262,6 +293,7 @@ static void PrintActionMovies(TMovie* movie, int /*index*/) {
     }
 }
 
+// Time: O(n) overall (n = number of movies, fixed small here) | Space: O(1)
 int main()
 {
 
@@ -296,8 +328,7 @@ int main()
     } else {
         std::cout << "Movie with title '" << searchTitle << "' not found." << std::endl;
     }
-    std::cout << "-------------------" << std::endl;
-    std::cout << std::endl;
+
 
     // Search for a movie by director
     std::string searchDirector = "John Lasseter";
@@ -308,7 +339,6 @@ int main()
     } else {
         std::cout << "Movie with director '" << searchDirector << "' not found." << std::endl;
     }
-    std::cout << "-------------------" << std::endl;
     std::cout << std::endl;
 
     // Find all movies in the Action genre
@@ -322,7 +352,6 @@ int main()
     movieList.everyMovie([](TMovie* movie, int index) {
         std::cout << "Index " << index << ":" << std::endl;
         movie->printInfo();
-        std::cout << "-------------------" << std::endl;
         });
 
     return 0;
