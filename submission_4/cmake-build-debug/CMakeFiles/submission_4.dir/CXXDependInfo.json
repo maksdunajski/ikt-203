@@ -1,0 +1,18 @@
+{
+	"bmi-installation" : null,
+	"compiler-frontend-variant" : "MSVC",
+	"compiler-id" : "MSVC",
+	"compiler-simulate-id" : "",
+	"config" : "Debug",
+	"cxx-modules" : {},
+	"dir-cur-bld" : "C:/Users/maksd/Fag/IKT-203/submission_4/cmake-build-debug",
+	"dir-cur-src" : "C:/Users/maksd/Fag/IKT-203/submission_4",
+	"dir-top-bld" : "C:/Users/maksd/Fag/IKT-203/submission_4/cmake-build-debug",
+	"dir-top-src" : "C:/Users/maksd/Fag/IKT-203/submission_4",
+	"exports" : [],
+	"forward-modules-from-target-dirs" : [],
+	"include-dirs" : [],
+	"language" : "CXX",
+	"linked-target-dirs" : [],
+	"module-dir" : "C:/Users/maksd/Fag/IKT-203/submission_4/cmake-build-debug/CMakeFiles/submission_4.dir"
+}
