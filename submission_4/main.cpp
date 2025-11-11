@@ -43,7 +43,6 @@ public:
     std::string ownerLastName;
 
     //TBankAccount(EBankAccountType, std::string, std::string);
-    ~TBankAccount();
 
  // //   std::string getAccountNumber() const;
  //    std::string getCreationTimeString() const;
@@ -306,6 +305,160 @@ void readFile(const std::string& filename, FNameRead OnNameRead) {
     }
 }
 
+typedef struct _TSummary {
+    long comparisonCount;
+    double timeTaken = 0.0;
+} TSummary;
+static TSummary stats;
+
+static EBankAccountType getRandomAccType() {
+    return static_cast<EBankAccountType>(rand() % 5);
+}
+
+TLinkedList* bankAccounts = new TLinkedList(true);
+TBankAccount** bankAccountsArray = nullptr;
+
+static bool OnNameRead(const std::string& firstName, const std::string& lastName) {
+    int accCount = rand() % 2 + 5;
+    for (int i = 0; i < accCount; i++) {
+        EBankAccountType accType = getRandomAccType();
+        TBankAccount* newAccount = new TBankAccount(accType, firstName, lastName);
+        bankAccounts->add(newAccount);
+    }
+    return true;
+}
+
+static void resetStats() {
+    stats.comparisonCount = 0;
+    stats.timeTaken = (static_cast<double>(clock())) / CLOCKS_PER_SEC;
+}
+
+static void printStats() {
+    stats.timeTaken = (static_cast<double>(clock()) / CLOCKS_PER_SEC) - stats.timeTaken;
+    std::cout << "Comparisons: " << stats.comparisonCount << ", Time taken: " << stats.timeTaken << "sec." <<std::endl;
+}
+
+static TBankAccount* findAccByNumber(TBankAccount** accountArray, int size, const std::string& accNumber) {
+    if (accountArray == nullptr || size == 0) {
+        return nullptr;
+    }
+    for (int i = 0; i < size; i++) {
+        stats.comparisonCount++;
+        if (accountArray[i]->getAccountNumber() == accNumber) {
+            return accountArray[i];
+        }
+    }
+    return nullptr;
+}
+
+static void printEveryAccountInDateRange(TBankAccount** accountArray, int size, time_t from, time_t to) {
+    if (accountArray == nullptr || size == 0) {
+        return;
+    }
+    int foundCount = 0;
+    resetStats();
+    for (int i = 0; i < size; i++) {
+        stats.comparisonCount++;
+        time_t creationTime = accountArray[i]->getCreationTimestamp();
+        if (creationTime >= from && creationTime <= to) {
+            std::cout << i + 1 << ". Account found:" << std::endl;
+            accountArray[i]->printAccountInfo();
+            foundCount++;
+        }
+    }
+    printStats();
+    if (foundCount == 0) {
+        std::cout << "No accounts found in the specified date range." << std::endl;
+    }
+    else {
+        std::cout << "Total accounts found: " << foundCount << std::endl;
+    }
+}
+
 void main() {
-    
+    std::cout << "--- Submission 4: Sosrt & Search ---" << std::endl;
+
+	// Test TBankAccount
+	//Gen random account type
+	//Change this name for you own names file
+	std::string namesFile = "../random_names.txt";
+	std::cout << "Reading names from file: " << namesFile << std::endl;
+	readFile(namesFile, OnNameRead);
+	std::cout << "Total Bank Accounts Created: " << bankAccounts->getSize() << std::endl;
+	std::cout << "Converting linked list to array..." << std::endl;
+	bankAccountsArray = bankAccounts->ToArray();
+	std::cout << "Array created with " << bankAccounts->getSize() << " accounts." << std::endl;
+
+
+	resetStats();
+	int getRandomIndex = rand() % bankAccounts->getSize();
+	TBankAccount* foundAccount = findAccByNumber(bankAccountsArray, bankAccounts->getSize(), bankAccountsArray[getRandomIndex]->getAccountNumber());
+	if (foundAccount)
+	{
+		std::cout << "Found Account: " << std::endl;
+		foundAccount->printAccountInfo();
+	}
+	else
+	{
+		std::cout << "Account not found." << std::endl;
+	}
+	printStats();
+
+	resetStats();
+	foundAccount = findAccByNumber(bankAccountsArray, bankAccounts->getSize(), "1234.56.78901");
+	if (foundAccount)
+	{
+		std::cout << "Found Account: " << std::endl;
+		foundAccount->printAccountInfo();
+	}
+	else
+	{
+		std::cout << "Account not found." << std::endl;
+	}
+	printStats();
+
+	// Find All (Integrated): Use your Every() method to find all accounts created in June 2024 and print their details.
+	resetStats();
+	struct June2024Key {
+		time_t start;
+		time_t end;
+	};
+	June2024Key juneKey{};
+	std::tm fromToTm = {};
+	fromToTm.tm_year = 2024 - 1900; // Year since 1900
+	fromToTm.tm_mon = 5; // June (0-based)
+	fromToTm.tm_mday = 1; // 1st
+	fromToTm.tm_hour = 0;
+	fromToTm.tm_min = 0;
+	fromToTm.tm_sec = 0;
+	juneKey.start = _mkgmtime(&fromToTm); // Use _mkgmtime for UTC
+	fromToTm.tm_mday = 30; // 30th
+	fromToTm.tm_hour = 23;
+	fromToTm.tm_min = 59;
+	fromToTm.tm_sec = 59;
+	juneKey.end = _mkgmtime(&fromToTm); // Use _mkgmtime for UTC
+
+	TLinkedList* juneAccounts = bankAccounts->Every(
+		[](TBankAccount* account, void* searchKey) -> bool {
+			June2024Key* key = static_cast<June2024Key*>(searchKey);
+			time_t ts = account->getCreationTimestamp();
+			return ts >= key->start && ts < key->end;
+		}, &juneKey);
+
+	std::cout << "Accounts created in June 2024: " << juneAccounts->getSize() << std::endl;
+	printStats();
+
+	juneAccounts->forEach(
+		[](TBankAccount* aAccount, int aIndex) {
+			std::cout << aIndex + 1 << ". ";
+			aAccount->printAccountInfo();
+		});
+
+	printEveryAccountInDateRange(bankAccountsArray, bankAccounts->getSize(), juneKey.start, juneKey.end);
+
+
+	// Cleanup
+	// First delete the array, then the linked list
+	delete[] bankAccountsArray;
+	delete bankAccounts;
 }

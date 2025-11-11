@@ -1,0 +1,24 @@
+# ninja log v6
+7	505	7845998340735936	CMakeFiles/submission_4.dir/main.cpp.obj.ddi	6292efbafc16de1d
+506	544	7845998346045798	CMakeFiles/submission_4.dir/CXX.dd	15cbe5e559006035
+506	544	7845998346045798	C:/Users/maksd/Fag/IKT-203/submission_4/cmake-build-debug/CMakeFiles/submission_4.dir/CXXModules.json	15cbe5e559006035
+506	544	7845998346045798	CMakeFiles/submission_4.dir/main.cpp.obj.modmap	15cbe5e559006035
+545	2613	7845998346105870	CMakeFiles/submission_4.dir/main.cpp.obj	2fdfc1a02c23a893
+1	172	7845998769115377	CMakeFiles/submission_4.dir/main.cpp.obj.ddi	6292efbafc16de1d
+172	200	7845998770825826	CMakeFiles/submission_4.dir/CXX.dd	15cbe5e559006035
+172	200	7845998770825826	C:/Users/maksd/Fag/IKT-203/submission_4/cmake-build-debug/CMakeFiles/submission_4.dir/CXXModules.json	15cbe5e559006035
+172	200	7845998770825826	CMakeFiles/submission_4.dir/main.cpp.obj.modmap	15cbe5e559006035
+209	1897	7845998771193567	CMakeFiles/submission_4.dir/main.cpp.obj	2fdfc1a02c23a893
+1897	2177	7845998788074161	submission_4.exe	a2e8c2b2707071c9
+2	172	7845999143304346	CMakeFiles/submission_4.dir/main.cpp.obj.ddi	6292efbafc16de1d
+172	200	7845999145005416	CMakeFiles/submission_4.dir/CXX.dd	15cbe5e559006035
+172	200	7845999145005416	C:/Users/maksd/Fag/IKT-203/submission_4/cmake-build-debug/CMakeFiles/submission_4.dir/CXXModules.json	15cbe5e559006035
+172	200	7845999145005416	CMakeFiles/submission_4.dir/main.cpp.obj.modmap	15cbe5e559006035
+200	1852	7845999145293410	CMakeFiles/submission_4.dir/main.cpp.obj	2fdfc1a02c23a893
+1852	2036	7845999161811530	submission_4.exe	a2e8c2b2707071c9
+2	182	7845999233650650	CMakeFiles/submission_4.dir/main.cpp.obj.ddi	6292efbafc16de1d
+182	205	7845999235442572	CMakeFiles/submission_4.dir/CXX.dd	15cbe5e559006035
+182	205	7845999235442572	C:/Users/maksd/Fag/IKT-203/submission_4/cmake-build-debug/CMakeFiles/submission_4.dir/CXXModules.json	15cbe5e559006035
+182	205	7845999235442572	CMakeFiles/submission_4.dir/main.cpp.obj.modmap	15cbe5e559006035
+206	1775	7845999235679596	CMakeFiles/submission_4.dir/main.cpp.obj	2fdfc1a02c23a893
+1775	1982	7845999251369507	submission_4.exe	a2e8c2b2707071c9
