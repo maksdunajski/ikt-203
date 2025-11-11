@@ -11,6 +11,7 @@
 #include <codecvt> // For codecvt_utf8
 #include <stdexcept> // For std::invalid_argument
 #include <string>
+#include <fstream>
 
 template <typename T>
 std::string toString(T value) {
@@ -278,13 +279,33 @@ public:
             current = current->next;
         }
     }
+};
 
+typedef bool (*FNameRead)(const std::string& firstName, const std::string& lastName);
 
+void readFile(const std::string& filename, FNameRead OnNameRead) {
+    if (filename.empty()) {
+        return;
+    }
+    std::ifstream file(filename);
+    if (!file.is_open()) {
+        std::cerr << "Error opening file " << filename << std::endl;
+        return;
+    }
+    std::string line;
+    while (std::getline(file, line)) {
+        std::istringstream iss(line);
+        std::string firstName, lastName;
+        if (iss >> firstName >> lastName) {
+            if (OnNameRead){
+                if (!OnNameRead(firstName, lastName)) {
+                    break;
+                }
+            }
+        }
+    }
+}
 
-
-
-void main () {
-
-
-
+void main() {
+    
 }
