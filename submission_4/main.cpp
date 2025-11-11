@@ -376,7 +376,7 @@ static void printEveryAccountInDateRange(TBankAccount** accountArray, int size, 
 }
 
 void main() {
-    std::cout << "--- Submission 4: Sosrt & Search ---" << std::endl;
+    std::cout << "--- Submission 4: Sort & Search ---" << std::endl;
 
 	// Test TBankAccount
 	//Gen random account type
