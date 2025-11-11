@@ -1,0 +1,7 @@
+# ninja log v6
+4	140	7846002913433097	CMakeFiles/submission_5.dir/main.cpp.obj.ddi	bf33bc4568a0f10d
+148	178	7846002915108973	CMakeFiles/submission_5.dir/CXX.dd	50838d1a5b9cb182
+148	178	7846002915108973	C:/Users/maksd/Fag/IKT-203/submission_5/cmake-build-debug/CMakeFiles/submission_5.dir/CXXModules.json	50838d1a5b9cb182
+148	178	7846002915108973	CMakeFiles/submission_5.dir/main.cpp.obj.modmap	50838d1a5b9cb182
+179	891	7846002915174580	CMakeFiles/submission_5.dir/main.cpp.obj	b060501d866ac8aa
+891	1165	7846002922301325	submission_5.exe	560dee9d2b4b14a2
